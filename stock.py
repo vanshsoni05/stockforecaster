@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 from datetime import date
 import yfinance as yf
+import appdirs as ad
+ad.user_cache_dir = lambda *args: "/tmp"
 from prophet import Prophet
 from prophet.plot import plot_plotly
 from plotly import graph_objects as go
