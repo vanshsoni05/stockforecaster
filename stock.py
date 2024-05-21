@@ -15,7 +15,6 @@ end = date.today().strftime("%Y-%m-%d")
 
 st.title("VANSH S&P 500 STOCK FORECASTER")
 st.caption("uses data given from yahoo finance")
-st.caption("not 100% accurate")
 tickers_df = pd.read_csv('sp500_tickers.csv')
 stocks = tuple(tickers_df['Symbol'])
 
