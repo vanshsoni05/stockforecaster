@@ -5,4 +5,4 @@ yfinance
 prophet
 plotly
 appdirs
-
+pandas_datareader
