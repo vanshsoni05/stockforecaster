@@ -3,7 +3,6 @@ pandas
 datetime
 yfinance
 prophet
-prophet.plot
 plotly
 appdirs
-pandas_datareader
+
