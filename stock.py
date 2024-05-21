@@ -35,7 +35,34 @@ def load_data(ticker):
 data_load_state = st.text("Loading data...")
 data = load_data(selected_stocks)
 data_load_state.text("Loading data...done!")
+### NEW CODE FOR ERRORS#####
+import streamlit as st
+import yfinance as yf
+import time
 
+@st.cache
+def load_data(ticker, start, end):
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            data = yf.download(ticker, start=start, end=end)
+            return data
+        except Exception as e:
+            st.error(f"Error fetching data: {e}")
+            time.sleep(5)  # Wait before retrying
+    return None
+
+selected_stocks = st.selectbox('Select stock', ['AAPL', 'GOOGL', 'MSFT'])
+start_date = st.date_input('Start date', value=pd.to_datetime('2020-01-01'))
+end_date = st.date_input('End date', value=pd.to_datetime('2023-01-01'))
+
+if selected_stocks:
+    data = load_data(selected_stocks, start_date, end_date)
+    if data is not None:
+        st.write(data)
+    else:
+        st.error("Failed to load data after multiple attempts.")
+######################################
 
 st.subheader("Raw data")
 st.write(data.tail())
