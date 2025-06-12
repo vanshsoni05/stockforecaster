@@ -6,3 +6,4 @@ prophet
 plotly
 appdirs
 pandas_datareader
+alpha_vantage
